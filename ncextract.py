@@ -4,11 +4,12 @@
 # input: netcdf, day, lat, lon output: TS plot and csv                               #
 # Author: Yahampath Marambe 2022-09-03                                               #
 ######################################################################################
+
 # import libraries
 from socket import create_server
+from turtle import color, title
 import numpy as np
 import xarray as xr
-import rioxarray as rxr
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from matplotlib.dates import DateFormatter
@@ -57,3 +58,44 @@ print('from {v1} to {v2}'.format(
                                 v2 = precep['precipitation_amount']['day'].values.max()
                                 ))
 # Extract data
+# nearest mid point
+lat = find_nearest_point(precep['precipitation_amount']['lat'].values, lat_of_interest)
+lon = find_nearest_point(precep['precipitation_amount']['lon'].values, lon_of_interest)
+print('nearest location is lat {} and lon is {}'.format(lat, lon))
+
+# select data for the point
+point_data = precep['precipitation_amount'].sel(lat=lat,
+                                                lon=lon,
+                                                day=slice(start, end))
+# plotting Time Sieries
+# precipitation data
+precep_y = point_data
+# time line
+day_x = point_data['day']
+# figure declaration
+fig, (ax1) = plt.subplots(figsize=(16,4))
+# plot chart
+ax1.bar(day_x, precep_y,
+        width=0.5, color = 'purple')
+# tittle
+ax1.set(title='Precipitation Time Series - point sampling')
+# axis lables
+plt.xlabel('Day')
+plt.ylabel('Precipitation(mm)')
+# month location
+months = mdates.MonthLocator()
+# days location
+days = mdates.DayLocator()
+# months format when display
+monthFmt = mdates.DateFormatter('%b')
+# set locators to axis
+ax1.xaxis.set_major_locator(months)
+ax1.xaxis.set_minor_locator(days)
+# set display day formatter to axis
+ax1.xaxis.set_major_formatter(monthFmt)
+# set x axis limits
+ax1.set_xlim(day_x.min(), day_x.max())
+# x tick rotation
+plt.xticks(rotation=50)
+plt.savefig('./output/TS_plot.png')
+plt.show()
