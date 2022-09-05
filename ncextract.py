@@ -99,3 +99,9 @@ ax1.set_xlim(day_x.min(), day_x.max())
 plt.xticks(rotation=50)
 plt.savefig('./output/TS_plot.png')
 plt.show()
+
+# create a dataframe
+df = point_data.to_dataframe()
+print(df.head(2))
+# burn a csv
+df.to_csv('./output/ts_data.csv')
