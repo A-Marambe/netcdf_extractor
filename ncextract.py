@@ -20,8 +20,8 @@ start = '2021-05-18'
 # give end date
 end = '2021-09-04'
 # lat , lon of point of interst
-lat_of_interest = 33 # 40.367474
-lon_of_interest = -90 #-82.996216
+lat_of_interest = 40.367474 #33
+lon_of_interest = -82.996216 #-90
 ##### parameter section ends
 
 # find the nearest point in the grid using given point
