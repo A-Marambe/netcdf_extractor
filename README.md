@@ -12,3 +12,4 @@ output: TS plot and CSV
 Panoply desktop software works best for quick views and creating animation using NetCDF files. Python packages, xarray, and NetCDF4 work best for modeling and production environments.
 Follow this link to Panoply by NASA.  
 (https://www.giss.nasa.gov/tools/panoply/)
+![precipitation_amount_in_pr_2021](https://user-images.githubusercontent.com/25448193/189524681-00c27ce1-5f8f-4ac4-b510-19880acf64e0.png)
