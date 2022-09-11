@@ -1,6 +1,6 @@
 # NetCDF data extractor
 NetCDF (network Common Data Form) is a file format for storing multidimensional scientific data (variables) such as temperature, humidity, pressure, wind speed, and direction.
-This file contains the necessary functions to extract data from a netCDF file.
+This python file contains the necessary functions to extract data from a netCDF file.
 It will create a time series plot and output data in a CSV file. In addition, metadata attributes also can be visualized for the file.  
   
   
